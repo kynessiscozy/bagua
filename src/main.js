@@ -2682,3 +2682,21 @@ function toggleDensity(){
   });
 })();
 
+window.calc=calc;
+window.selChip=selChip;
+window.goBack=goBack;
+window.switchTab=switchTab;
+window.toggleDensity=toggleDensity;
+window.copyReport=copyReport;
+window.openSaveModal=openSaveModal;
+window.closeSaveModal=closeSaveModal;
+window.confirmSaveProfile=confirmSaveProfile;
+window.openAsk=openAsk;
+window.closeAsk=closeAsk;
+window.toggleAIConfig=toggleAIConfig;
+window.aiSwitchCat=aiSwitchCat;
+window.doAskCustom=doAskCustom;
+window.closeRq=closeRq;
+window.exportProfiles=exportProfiles;
+window.handleImport=handleImport;
+
