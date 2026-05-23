@@ -96,9 +96,8 @@
   <div class="tab-bar-inner">
     <div class="tab-item" data-sec="s-ming" onclick="switchTab(this)">命盘</div>
     <div class="tab-item" data-sec="s-yun" onclick="switchTab(this)">运势</div>
-    <div class="ai-dock-btn" onclick="openAsk()" title="AI问">AI问</div>
+    <div class="ai-dock-btn" onclick="openAsk()" title="问问">问问</div>
     <div class="tab-item" data-sec="s-rel" onclick="switchTab(this)">关系</div>
-    <div class="tab-item" data-sec="s-adv" onclick="switchTab(this)">建议</div>
   </div>
 </div>
 
@@ -107,7 +106,12 @@
   <button class="ai-config-toggle" onclick="toggleAIConfig()" title="AI设置">?</button>
   <div class="ai-close" onclick="closeAsk()">×</div>
   <div class="ai-handle"></div>
-  <div class="ai-title">AI问</div>
+  <div class="ai-title">问问</div>
+  <div class="ai-rq-btn" onclick="showRiQian()">
+    <span style="font-size:1.1em">📜</span>
+    <span style="font-size:.8em;color:rgba(255,255,255,0.85);font-weight:500">查看今日日签</span>
+    <span style="margin-left:auto;font-size:.7em;color:rgba(255,255,255,0.4)">宜忌 · 吉凶</span>
+  </div>
   <div class="ai-config" id="aiConfig">
     <div class="ai-config-grid">
       <div>
