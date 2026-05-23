@@ -669,7 +669,7 @@ function getMonthlyAlert(b,wx){const now=new Date();const m=now.getMonth();const
 function getRiskWarning(b,wx,lnSS,dySS){const r=[];if(lnSS.includes('官杀'))r.push({t:'情绪波动',d:'官杀流年压力倍增，注意焦虑与睡眠'});if(lnSS.includes('比劫'))r.push({t:'合作风险',d:'比劫争财，合作与借贷需签清晰协议'});if(lnSS.includes('财')&&!wx.st)r.push({t:'财务压力',d:'身弱见财为忌，量力而行，忌高风险投机'});if(lnSS.includes('印')&&dySS.includes('食伤'))r.push({t:'决策摇摆',d:'印制食伤，想法多但落地难，需聚焦'});if(wx.c['火']<0.8||wx.c['水']<0.8)r.push({t:'睡眠问题',d:'水火不调，注意作息与睡眠质量'});if(!r.length)r.push({t:'气场平和',d:'无明显重大风险，稳中求进即可',safe:1});return r;}
 function getRelationMode(dg,ss,gen){const map={甲:'独立型',乙:'依赖型',丙:'热情型',丁:'慢热型',戊:'务实型',己:'包容型',庚:'理性型',辛:'挑剔型',壬:'自由型',癸:'敏感型'};return map[dg]||'平衡型';}
 function getSuitableType(wx,dg){const map={木:'情绪稳定、行动力强、土金偏旺的人',火:'包容性强、愿意给予空间的人',土:'有上进心、能带来新鲜感的人',金:'温柔细腻、善于沟通的人',水:'逻辑清晰、能给予安全感的人'};return map[wx.dw]||'五行互补、性格圆融的人';}
-function getRelationRisks(wx,dg,ss){const r=[];if(wx.st)r.push('过于强势，容易忽略伴侣感受');if(!wx.st)r.push('过于迁就，边界感模糊导致委屈');if(ss.dzc.some(c=>c.s.includes('伤官')))r.push('言语锋利，易因沟通方式产生摩擦');if(wx.c['火']>3)r.push('情绪波动大，热情来得快去得也快');if(wx.c['水']>2.8)r.push('思虑过多，容易因猜疑产生隔阂');if(!r.length)r.push('暂无显著关系风险，保持真诚沟通即可');return r;}
+function getRelationRisks(wx,dg,ss){const r=[];if(wx.st)r.push('过于强势，容易忽略伴侣感受');if(!wx.st)r.push('过于迁就，边界感模糊导致委屈');if(ss?.dzc?.some(c=>c.s.includes('伤官')))r.push('言语锋利，易因沟通方式产生摩擦');if(wx.c['火']>3)r.push('情绪波动大，热情来得快去得也快');if(wx.c['水']>2.8)r.push('思虑过多，容易因猜疑产生隔阂');if(!r.length)r.push('暂无显著关系风险，保持真诚沟通即可');return r;}
 function getDecisionAdvice(b,wx,dy,ln,scene){
   const ctx=getCtx();
   const age=ctx?ctx.age:(b._meta?TJ.calcAge(b._meta.by,b._meta.bm||1,b._meta.bd||1):0);
@@ -861,11 +861,13 @@ function renderQuickRead(secKey,d){
   if(secKey==='rel'){
     const star=d.gen==='male'?'财星(妻)':'官星(夫)';
     const hasPeach=d.shensha&&d.shensha.some(x=>x.n==='桃花'||x.n==='红艳');
+    const cLnSS=d.cLnSS||'';
+    const hasSpouseStar=cLnSS.includes(d.gen==='male'?'财':'官');
     items.push({l:'配偶星',v:star});
     items.push({l:'桃花',v:hasPeach?'命带':'不显'});
     items.push({l:'感情节奏',v:wx.st?'主导型':'迁就型'});
-    items.push({l:'流年合婚',v:d.cLnSS.includes(d.gen==='male'?'财':'官')?'利结合':'宜深耕'});
-    const summary='你的'+star+'代表伴侣特质，性格上属于「<b>'+(wx.st?'主导型':'迁就型')+'</b>」。'+(hasPeach?'命带桃花，异性缘充足但需筛选；':'桃花不显，缘分多来自熟人介绍；')+(d.cLnSS.includes(d.gen==='male'?'财':'官')?'今年配偶星到位，未婚利结合。':'今年感情节奏偏稳，宜深耕已有关系。');
+    items.push({l:'流年合婚',v:hasSpouseStar?'利结合':'宜深耕'});
+    const summary='你的'+star+'代表伴侣特质，性格上属于「<b>'+(wx.st?'主导型':'迁就型')+'</b>」。'+(hasPeach?'命带桃花，异性缘充足但需筛选；':'桃花不显，缘分多来自熟人介绍；')+(hasSpouseStar?'今年配偶星到位，未婚利结合。':'今年感情节奏偏稳，宜深耕已有关系。');
     return _qrCard('关系速读',items,summary,[
       {k:'loveMode',t:'相处模式→'},{k:'loveMatch',t:'适合对象→'},{k:'relAi',t:'AI 双盘合参→'}
     ]);
