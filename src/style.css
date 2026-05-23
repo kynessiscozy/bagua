@@ -162,7 +162,7 @@ body.home .fd input:focus,body.home .fd select:focus{border-color:hsla(var(--acc
 .p2-inner{max-width:680px;margin:0 auto;padding:16px 16px 20px}
 
 :root{--dk-h:52px;--dk-r:24px}
-.tab-bar{position:fixed;z-index:60;display:none;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);height:var(--dk-h);padding:13px;background:rgba(255,255,255,0.08);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border-radius:var(--dk-r);box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 0 1px rgba(255,255,255,0.15);animation:dkIn .45s cubic-bezier(.2,.8,.3,1.2) backwards}
+.tab-bar{position:fixed;z-index:60;display:none;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);height:var(--dk-h);padding:13px;background:rgba(255,255,255,0.08);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border-radius:var(--dk-r);box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 0 1px rgba(255,255,255,0.15);background-image:linear-gradient(180deg,rgba(255,255,255,0.12) 0%,transparent 60%);animation:dkIn .45s cubic-bezier(.2,.8,.3,1.2) backwards}
 @keyframes dkIn{from{opacity:0;transform:translateX(-50%) translateY(16px) scale(0.96)}}
 .tab-bar.show{display:flex;align-items:center}
 .tab-bar-inner{display:flex;align-items:center;gap:4px;height:100%;padding:3px;border-radius:100px}
