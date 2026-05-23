@@ -94,14 +94,12 @@
 
 <div class="tab-bar" id="tabBar">
   <div class="tab-bar-inner">
-    <div class="tab-item active" data-sec="s-ming" onclick="switchTab(this)">命盘</div>
+    <div class="tab-item" data-sec="s-ming" onclick="switchTab(this)">命盘</div>
     <div class="tab-item" data-sec="s-yun" onclick="switchTab(this)">运势</div>
+    <div class="ai-dock-btn" onclick="openAsk()" title="AI问">AI问</div>
     <div class="tab-item" data-sec="s-rel" onclick="switchTab(this)">关系</div>
     <div class="tab-item" data-sec="s-adv" onclick="switchTab(this)">建议</div>
   </div>
-</div>
-<div class="ai-dock" id="aiDock">
-  <div class="ai-dock-btn" onclick="openAsk()" title="AI问">AI问</div>
 </div>
 
 <div class="ai-overlay" id="aiOverlay" onclick="closeAsk()"></div>
