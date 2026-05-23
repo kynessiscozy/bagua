@@ -2682,4 +2682,3 @@ function toggleDensity(){
   });
 })();
 
-</script>
