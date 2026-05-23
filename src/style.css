@@ -162,10 +162,10 @@ body.home .fd input:focus,body.home .fd select:focus{border-color:hsla(var(--acc
 .p2-inner{max-width:680px;margin:0 auto;padding:16px 16px 20px}
 
 :root{--dk-h:52px;--dk-r:24px}
-.tab-bar{position:fixed;z-index:60;display:none;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);height:var(--dk-h);padding:3px;background:rgba(14,11,9,0.88);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border-radius:var(--dk-r);box-shadow:0 4px 24px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.05);animation:dkIn .45s cubic-bezier(.2,.8,.3,1.2) backwards}
+.tab-bar{;padding:5px;background:rgba(14,11,9,0.88);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border-radius:var(--dk-r);box-shadow:0 4px 24px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.05);animation:dkIn .45s cubic-bezier(.2,.8,.3,1.2) backwards}
 @keyframes dkIn{from{opacity:0;transform:translateX(-50%) translateY(16px) scale(0.96)}}
 .tab-bar.show{display:flex;align-items:center}
-.tab-bar-inner{display:flex;align-items:center;gap:4px;padding:2px;border-radius:100px}
+.tab-bar-inner{;padding:3px;border-radius:100px}
 .tab-item{min-width:48px;padding:8px 12px;border-radius:100px;cursor:pointer;transition:all .25s ease;font-size:.72em;font-weight:500;letter-spacing:.4px;color:rgba(255,255,255,0.4);font-family:var(--sf);text-align:center}
 .tab-item:hover{color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.06)}
 .tab-item.active{color:#fff;background:rgba(255,255,255,0.1);box-shadow:inset 0 1px 0 rgba(255,255,255,0.12)}
