@@ -33,109 +33,48 @@
         <div style="font-size:.85em;color:rgba(255,245,220,0.5);letter-spacing:1px;text-align:center;margin-bottom:14px">请填写您的出生信息</div>
         <div class="form-grid">
           <div class="fd">
-            <label>性别</label>
-            <select id="gender">
-              <option value="male" selected>男</option>
-              <option value="female">女</option>
-            </select>
+            <label>性别</label><select id="bGen"><option value="male">男（乾造）</option><option value="female">女（坤造）</option></select>
           </div>
-          <div class="fd">
-            <label>出生年</label>
-            <input type="number" id="birthYear" placeholder="如 1990" min="1900" max="2100">
-          </div>
-          <div class="fd">
-            <label>出生月</label>
-            <input type="number" id="birthMonth" placeholder="1-12" min="1" max="12">
-          </div>
-          <div class="fd">
-            <label>出生日</label>
-            <input type="number" id="birthDay" placeholder="1-31" min="1" max="31">
-          </div>
-          <div class="fd">
-            <label>出生时</label>
-            <select id="birthHour">
-              <option value="23" selected>子时 (23-1)</option>
-              <option value="0">子时 (0-1)</option>
-              <option value="1">丑时 (1-3)</option>
-              <option value="2">丑时 (2-3)</option>
-              <option value="3">寅时 (3-5)</option>
-              <option value="4">寅时 (4-5)</option>
-              <option value="5">卯时 (5-7)</option>
-              <option value="6">卯时 (6-7)</option>
-              <option value="7">辰时 (7-9)</option>
-              <option value="8">辰时 (8-9)</option>
-              <option value="9">巳时 (9-11)</option>
-              <option value="10">巳时 (10-11)</option>
-              <option value="11">午时 (11-13)</option>
-              <option value="12">午时 (12-13)</option>
-              <option value="13">未时 (13-15)</option>
-              <option value="14">未时 (14-15)</option>
-              <option value="15">申时 (15-17)</option>
-              <option value="16">申时 (16-17)</option>
-              <option value="17">酉时 (17-19)</option>
-              <option value="18">酉时 (18-19)</option>
-              <option value="19">戌时 (19-21)</option>
-              <option value="20">戌时 (20-21)</option>
-              <option value="21">亥时 (21-23)</option>
-              <option value="22">亥时 (22-23)</option>
-            </select>
-          </div>
-          <div class="fd">
-            <label>出生地</label>
-            <select id="birthPlace">
-              <option value="北京" selected>北京</option>
-              <option value="天津">天津</option>
-              <option value="河北">河北</option>
-              <option value="山西">山西</option>
-              <option value="内蒙古">内蒙古</option>
-              <option value="辽宁">辽宁</option>
-              <option value="吉林">吉林</option>
-              <option value="黑龙江">黑龙江</option>
-              <option value="上海">上海</option>
-              <option value="江苏">江苏</option>
-              <option value="浙江">浙江</option>
-              <option value="安徽">安徽</option>
-              <option value="福建">福建</option>
-              <option value="江西">江西</option>
-              <option value="山东">山东</option>
-              <option value="河南">河南</option>
-              <option value="湖北">湖北</option>
-              <option value="湖南">湖南</option>
-              <option value="广东">广东</option>
-              <option value="广西">广西</option>
-              <option value="海南">海南</option>
-              <option value="重庆">重庆</option>
-              <option value="四川">四川</option>
-              <option value="贵州">贵州</option>
-              <option value="云南">云南</option>
-              <option value="西藏">西藏</option>
-              <option value="陕西">陕西</option>
-              <option value="甘肃">甘肃</option>
-              <option value="青海">青海</option>
-              <option value="宁夏">宁夏</option>
-              <option value="新疆">新疆</option>
-              <option value="台湾">台湾</option>
-              <option value="香港">香港</option>
-              <option value="澳门">澳门</option>
-            </select>
+          <div class="fd full">
+            <label>你现在最想解决什么？</label>
+            <div class="chip-wrap" id="qChips">
+              <div class="chip" data-q="事业方向" onclick="selChip(this)">事业方向</div>
+              <div class="chip" data-q="财运提升" onclick="selChip(this)">财运提升</div>
+              <div class="chip" data-q="感情关系" onclick="selChip(this)">感情关系</div>
+              <div class="chip" data-q="跳槽创业" onclick="selChip(this)">跳槽创业</div>
+              <div class="chip" data-q="健康状态" onclick="selChip(this)">健康状态</div>
+              <div class="chip" data-q="人生迷茫" onclick="selChip(this)">人生迷茫</div>
+            </div>
+            <input type="hidden" id="bQ" value="">
           </div>
         </div>
+        <div class="switch-row" style="margin-top:6px"><div class="switch" id="swTrueSolar" onclick="this.classList.toggle('on');document.getElementById('swText').textContent=(this.classList.contains('on')?'开启':'关闭')+'真太阳时（按出生地经度精确换算时辰）'"></div><span id="swText">关闭真太阳时（按出生地经度精确换算时辰）</span></div>
         <div class="cta-row">
-          <button class="cta" id="calcBtn" onclick="calculate()">开启天机</button>
+          <button class="cta" id="btnGo2" onclick="calc()">开始推演</button>
         </div>
       </div>
-      <div class="anim-in d5" id="recentZone" style="display:none">
+      <div id="recentZone" style="margin-bottom:24px;display:none">
         <div class="recent-hd">
-          <span class="recent-hd-title">最近推演</span>
+          <div class="recent-hd-title">最近推演</div>
         </div>
-        <div class="recent-grid" id="recentList"></div>
+        <div class="recent-grid" id="recentGrid"></div>
       </div>
-      <div class="anim-in d5" id="profileZone" style="display:none">
-        <div class="recent-hd">
-          <span class="recent-hd-title">我的命盘</span>
-          <button class="p2-back" onclick="clearProfile()" style="font-size:.68em;padding:4px 10px">清除</button>
+
+      <div id="profileZone" style="margin-bottom:24px;display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div style="font-size:.78em;color:rgba(255,245,220,0.35);letter-spacing:1px">命盘档案</div>
+          <div style="display:flex;gap:8px">
+            <button onclick="exportProfiles()" style="padding:5px 12px;border-radius:100px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.5);font-size:.72em;font-family:var(--sf);cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">导出</button>
+            <button onclick="document.getElementById('impFile').click()" style="padding:5px 12px;border-radius:100px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.5);font-size:.72em;font-family:var(--sf);cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">导入</button>
+            <input type="file" id="impFile" style="display:none" accept=".json" onchange="handleImport(this)">
+          </div>
         </div>
-        <div class="recent-grid" id="profileList"></div>
+        <div id="profileGrid" class="recent-grid"></div>
+        <div id="profileEmpty" class="pf-empty" style="display:none;color:rgba(255,255,255,0.25);font-size:.78em;text-align:center;padding:14px 0">暂无档案，推算后点击「保存」即可收藏命盘</div>
+      </div>
+
+      <div class="anim-in d2" style="text-align:center;padding:20px 0 8px">
+        <p style="color:rgba(255,255,255,0.14);font-size:.6em;letter-spacing:4px">天 · 机 · 八 · 字 · 决 · 策</p>
       </div>
     </div>
   </div>
@@ -147,13 +86,11 @@
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
       返回
     </button>
-    <div class="p2-title" id="p2Title">命盘详情</div>
-    <div class="p2-actions">
-      <button class="p2-act" id="densityToggle" onclick="toggleDensity()" title="密度切换">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-      </button>
-      <button class="p2-act" id="rqBtn" onclick="showRQ()" title="日签">签</button>
-      <button class="p2-act" onclick="saveProfile()">💾</button>
+    <div class="p2-title" id="p2Title">命理报告</div>
+    <div class="p2-actions"><div class="p2-act" id="densityToggle" onclick="toggleDensity()" title="切换信息密度"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:block"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+      <div class="p2-act" onclick="copyReport()" title="复制报告"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></div>
+      <div class="p2-act" onclick="openSaveModal()" title="保存档案">💾</div>
+      <div class="p2-act" onclick="window.print()" title="打印"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="6,9 6,2 18,2 18,9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></div>
     </div>
   </div>
   <div class="p2-scroll" id="p2Scroll"><button class="back-to-top" id="backToTop" onclick="document.getElementById('p2Scroll').scrollTo({top:0,behavior:'smooth'})"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg></button>
